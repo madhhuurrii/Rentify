@@ -54,36 +54,7 @@ let transporter = nodemailer.createTransport({
       : console.log(`=== Server is ready to take messages: ${success} ===`);
    });
 
-//    let mailOptions = {
-//     from: "test@gmail.com",
-//     to: process.env.EMAIL,
-//     subject: "Nodemailer API",
-//     text: "Hi from your nodemailer API",
-//    };
-//    transporter.sendMail(mailOptions, function (err, data) {
-//     if (err) {
-//       console.log("Error " + err);
-//     } else {
-//       console.log("Email sent successfully");
-//     }
-//    });
-//    seller.post("/interest/:id", function (req, res) {
-//     let mailOptions = {
-//       from: "test@gmail.com",
-//       to: process.env.EMAIL,
-//       subject: "Nodemailer API",
-//       text: "Hi from your nodemailer API",
-//     };
-   
-//     transporter.sendMail(mailOptions, function (err, data) {
-//       if (err) {
-//         console.log("Error " + err);
-//       } else {
-//         console.log("Email sent successfully");
-//         res.json({ status: "Email sent" });
-//       }
-//     });
-//    });
+
 
       seller.get('/interest/:id', (req, res) => {
         const isLoggedIn = req.session.isLoggedIn;
@@ -92,30 +63,18 @@ let transporter = nodemailer.createTransport({
        
         if (isLoggedIn) {
             
-            User.findOne({email:email},function(err,items){
+           
                 Seller.findOne({_id:id}, function(err,ins){
-                    imgModel.findOne({},function(err,img){
-                        let mailOptions = {
-                            from: "test@gmail.com",
-                            to: items.email,
-                            subject: "Here is your Interested Property Information",
-                            text: "Property name: "+ins.propname+"\nProperty price: "+ins.price+"\nSeller name: "+items.firstname+items.lastname+"\nSeller Contact: "+items.mobile+"\nSeller email: "+items.email,
-                          };
+                    User.findOne({email:ins.email},function(err,items){
+                    imgModel.findOne({email:ins.email},function(err,img){
+                        global.em=items.email;
                           let mailOptions1 = {
                             from: "test@gmail.com",
                             to: ins.email,
                             subject: "A Buyer is Interested in You!",
                             text: "Buyer name: "+items.firstname+items.lastname+"\nBuyer Contact: "+items.mobile+"\nBuyer email: "+items.email,
                           };
-                         
-                          transporter.sendMail(mailOptions, function (err, data) {
-                            if (err) {
-                              console.log("Error " + err);
-                            } else {
-                              console.log("Email sent successfully");
-                              res.json({ status: "Email sent" });
-                            }
-                          });
+                          
                           transporter.sendMail(mailOptions1, function (err, data) {
                             if (err) {
                               console.log("Error " + err);
@@ -131,7 +90,22 @@ let transporter = nodemailer.createTransport({
                     })
                 })
             })
-            
+            User.findOne({email:em},function(err,i){
+                let mailOptions = {
+                    from: "test@gmail.com",
+                    to: em,
+                    subject: "Here is your Interested Property Information",
+                    text: "Seller name: "+i.firstname+i.lastname+"\nSeller Contact: "+i.mobile+"\nSeller email: "+i.email,
+                  };
+                  transporter.sendMail(mailOptions, function (err, data) {
+                    if (err) {
+                      console.log("Error " + err);
+                    } else {
+                      console.log("Email sent successfully");
+                      res.json({ status: "Email sent" });
+                    }
+                  });
+            })
          
         } else {
             // console.log(isLoggedIn)
