@@ -108,7 +108,7 @@ login.get('/logout', (req, res) => {
         
         User.find({email:email},function(err,use){
           Seller.find({email:email}, function (err, sell) {
-            imgModel.find({email:email}, function (err, items) {
+            imgModel.find({}, function (err, items) {
                 // for(let i=0;i<sell.length;i++){
                 //   console.log(sell[i])
                 // }

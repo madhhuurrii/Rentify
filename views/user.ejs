@@ -28,7 +28,7 @@
       
         </div>
         
-        <% if(sellList.length>=3) {%>
+      
           <div class="text-center text-title pb-4">Property Posted on Rentify</div>
           <% for(var i=0; i<sellList.length; i++) { %>       
             <% if (i === 0 || i % 3 === 0) { %>
@@ -72,117 +72,8 @@
                 <% } %>
                 <% } %>
                 
-                <%} else if(sellList.length==1){%>
-                
-                   
-                    <div class="row align-items-center justify-content-center px-5 py-5">
-                      <div class="text-center text-title pb-4">Property Posted on Rentify</div>
-                        <div class="col-md-4">
-                            <div class="card mb-3 p-3">
-                               <img
-                                          src="data:image/<%=items[0].img.contentType%>;base64,<%=items[0].img.data.toString('base64')%>"
-                                          class="
-                                            img-thumbnail img-fluid preview-images
-                                            d-block w-100
-                                          "
-                                        />
-                                    <div class="card-title text-title h3 py-3 text-left fw-bold"><%=sellList[0].propname%><span><i class="fa-regular fa-heart ps-2"></i><%=sellList[0].count%></span></div>  
-                                <div class="d-md-flex justify-content-left pb-3">
-                                    <i class="fa-solid fs-4 fa-bed px-2"></i><span class="h6 pe-4">Bedroom-<%=sellList[0].bedroom%></span>
-                                    <i class="fa-solid fs-4 fa-bath px-2"></i> <span class="h6">Bathroom - <%=sellList[0].bathroom%></span>
-                                </div>
-                                <div class="d-md-flex justify-content-left pb-3">
-                                   
-                                    <div class="ps-4 h4">Rs.<%=sellList[0].price%></div>
-                                </div>
-                                <div class="d-md-flex justify-content-left pb-3">
-                                  <div class="pe-3">
-                                    <button type="button" class="btn btn-dark">
-    
-                                      <a href="/delete/<%=items[0]._id%>/<%=sellList[0]._id%>" class="text-decoration-none text-white"><i class="fa-solid fa-x pe-3"></i><span class="h6">Delete</span></a>
-                                   
-                                    </button>
-                                  </div>
-                                  <button type="button" class="btn btn-dark">
-                                    <a href="/update/<%=sellList[0]._id%>" class="text-decoration-none text-white"><i class="fa-solid fa-pen-nib pe-3"></i><span class="h6">Update</span></a>
-                                 
-                                  </button>
-                              </div>
-                                </div>
-                            </div>
-                          
-                        </div>
-                        <%} else if(sellList.length==2){%>
-                        <div class="row align-items-center justify-content-center px-5 py-5">
-                          <div class="text-center text-title pb-4">Property Posted on Rentify</div>
-                            <div class="col-md-4">
-                                <div class="card mb-3 p-3">
-                                   <img
-                                              src="data:image/<%=items[0].img.contentType%>;base64,<%=items[0].img.data.toString('base64')%>"
-                                              class="
-                                                img-thumbnail img-fluid preview-images
-                                                d-block w-100
-                                              "
-                                            />
-                                        <div class="card-title text-title h3 py-3 text-left fw-bold"><%=sellList[0].propname%><span><i class="fa-regular fa-heart ps-2"></i><%=sellList[0].count%></span></div>  
-                                    <div class="d-md-flex justify-content-left pb-3">
-                                        <i class="fa-solid fs-4 fa-bed px-2"></i><span class="h6 pe-4">Bedroom-<%=sellList[0].bedroom%></span>
-                                        <i class="fa-solid fs-4 fa-bath px-2"></i> <span class="h6">Bathroom - <%=sellList[0].bathroom%></span>
-                                    </div>
-                                    <div class="d-md-flex justify-content-left pb-3">
-                                        
-                                        <div class="ps-4 h4">Rs.<%=sellList[0].price%></div>
-                                    </div>
-                                    <div class="d-md-flex justify-content-left pb-3">
-                                      <div class="pe-3">
-                                        <button type="button" class="btn btn-dark">
-                                          <a href="/delete/<%=items[0]._id%>/<%=sellList[0]._id%>" class="text-decoration-none text-white"><i class="fa-solid fa-x pe-3"></i><span class="h6">Delete</span></a>
-                                       
-                                        </button>
-                                      </div>
-                                      <button type="button" class="btn btn-dark">
-                                        <a href="/update/<%=sellList[0]._id%>" class="text-decoration-none text-white"><i class="fa-solid fa-pen-nib pe-3"></i><span class="h6">Update</span></a>
-                                     
-                                      </button>
-                                  </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                  <div class="card mb-3 p-3">
-                                     <img
-                                                src="data:image/<%=items[1].img.contentType%>;base64,<%=items[1].img.data.toString('base64')%>"
-                                                class="
-                                                  img-thumbnail img-fluid preview-images
-                                                  d-block w-100
-                                                "
-                                              />
-                                          <div class="card-title text-title h3 py-3 text-left fw-bold"><%=sellList[1].propname%><span><i class="fa-regular fa-heart ps-2"></i><%=sellList[1].count%></span></div>  
-                                      <div class="d-md-flex justify-content-left pb-3">
-                                          <i class="fa-solid fs-4 fa-bed px-2"></i><span class="h6 pe-4">Bedroom-<%=sellList[1].bedroom%></span>
-                                          <i class="fa-solid fs-4 fa-bath px-2"></i> <span class="h6">Bathroom - <%=sellList[1].bathroom%></span>
-                                      </div>
-                                      <div class="d-md-flex justify-content-left pb-3">
-                                         
-                                          <div class="ps-4 h4">Rs.<%=sellList[1].price%></div>
-                                      </div>
-                                      <div class="d-md-flex justify-content-left pb-3">
-                                        <div class="pe-3">
-                                          <button type="button" class="btn btn-dark">
-                                            <a href="/delete/<%=items[1]._id%>/<%=sellList[1]._id%>" class="text-decoration-none text-white"><i class="fa-solid fa-x pe-3"></i><span class="h6">Delete</span></a>
-                                         
-                                          </button>
-                                        </div>
-                                        <button type="button" class="btn btn-dark">
-                                          <a href="/update/<%=sellList[1]._id%>" class="text-decoration-none text-white"><i class="fa-solid fa-pen-nib pe-3"></i><span class="h6">Update</span></a>
-                                       
-                                        </button>
-                                    </div>
-                                      </div>
-                                  </div>
-                            <%} else{%>
-                              <%}%>  
-                            </div>
-    </div>
+              
+   
     <%-include('footer')%>
    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

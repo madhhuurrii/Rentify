@@ -67,12 +67,14 @@ let transporter = nodemailer.createTransport({
                 Seller.findOne({_id:id}, function(err,ins){
                     User.findOne({email:ins.email},function(err,items){
                     imgModel.findOne({email:ins.email},function(err,img){
-                        global.em=items.email;
+                        var em=items.email
+                        // global.em=items.email;
                           let mailOptions1 = {
                             from: "test@gmail.com",
-                            to: ins.email,
-                            subject: "A Buyer is Interested in You!",
-                            text: "Buyer name: "+items.firstname+items.lastname+"\nBuyer Contact: "+items.mobile+"\nBuyer email: "+items.email,
+                            to: req.session.email,
+                            subject: "Here is your Interested Property Information",
+                            text: "Seller name: "+items.firstname+" "+items.lastname+"\nSeller Contact: "+items.mobile+"\nSeller email: "+items.email,
+                            
                           };
                           
                           transporter.sendMail(mailOptions1, function (err, data) {
@@ -90,12 +92,14 @@ let transporter = nodemailer.createTransport({
                     })
                 })
             })
-            User.findOne({email:em},function(err,i){
+            
+            Seller.findOne({_id:id}, function(err,ins){
+            User.findOne({email:req.session.email},function(err,i){
                 let mailOptions = {
                     from: "test@gmail.com",
-                    to: em,
-                    subject: "Here is your Interested Property Information",
-                    text: "Seller name: "+i.firstname+i.lastname+"\nSeller Contact: "+i.mobile+"\nSeller email: "+i.email,
+                    to: ins.email,
+                    subject: "A Buyer is interested in you",
+                    text: "Buyer name: "+i.firstname+i.lastname+"\nBuyer Contact: "+i.mobile+"\nBuyer email: "+i.email,
                   };
                   transporter.sendMail(mailOptions, function (err, data) {
                     if (err) {
@@ -105,7 +109,7 @@ let transporter = nodemailer.createTransport({
                       res.json({ status: "Email sent" });
                     }
                   });
-            })
+                })})
          
         } else {
             // console.log(isLoggedIn)
@@ -152,8 +156,9 @@ seller.post(
                     path.join("./uploads/" + req.file.filename)
                 ),
                 contentType: "image/png",
-                email:email,
+                
             },
+            email:email,
 
         };
         imgModel.create(obj, (err, item) => {
