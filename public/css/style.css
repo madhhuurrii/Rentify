@@ -1,0 +1,86 @@
+.body1 {
+    background-image: url("../img/Desktop\ -\ 1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* overflow-x: hidden; */
+   }
+.header-banner{
+    background-image: url("../img/Desktop\ -\ 1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.text-title{
+    font-family: "Inter", serif;
+    font-weight: 600;
+    font-size: 34px;
+}
+.text-title2{
+    font-family: "Inter", serif;
+    font-weight: 600;
+    font-size: 40px;
+}
+
+.text-title1{
+    font-family: "Inter", serif;
+    font-weight: 600;
+    font-size: 20px;
+}
+.text-title3{
+    font-family: "Inika";
+    font-weight: 200;
+    font-size: 20px;
+}
+.btn-login{
+    border-radius: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+.card-login{
+    
+    --bs-card-spacer-y: 1rem;
+    --bs-card-spacer-x: 1rem;
+    --bs-card-title-spacer-y: 0.5rem;
+    --bs-card-title-color: ;
+    --bs-card-subtitle-color: ;
+    --bs-card-border-width: var(--bs-border-width);
+    --bs-card-border-color: var(--bs-border-color-translucent);
+    --bs-card-border-radius: var(--bs-border-radius);
+    --bs-card-box-shadow: ;
+    --bs-card-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width)));
+    --bs-card-cap-padding-y: 0.5rem;
+    --bs-card-cap-padding-x: 1rem;
+    --bs-card-cap-bg: rgba(var(--bs-body-color-rgb), 0.03);
+    --bs-card-cap-color: ;
+    --bs-card-height: ;
+    --bs-card-color: ;
+    --bs-card-bg: var(--bs-body-bg);
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: var(--bs-card-height);
+    color: var(--bs-body-color);
+    word-wrap: break-word;
+    background-color: var(--bs-card-bg);
+    background-clip: border-box;
+    border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+    border-radius: 25px;
+}
+
+.review_bottom {
+    margin: 0;
+    padding :0;
+        list-style: none;
+    }
+    
+    .review_bottom li {
+    float: left; 
+    display: inline-block;
+    }
